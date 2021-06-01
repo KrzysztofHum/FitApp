@@ -25,6 +25,7 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  height: 26px;
   padding: 8px;
   background-color: #52ba31;
   color: white;
@@ -39,12 +40,9 @@ body {
   margin: 0;
 }
 
-.hamburger, .navigation {
-  transition: transform .3s .1s ease-in-out;
-}
-
-.hamburger-active {
-  transform: translateX(250px);
+.hamburger,
+.navigation {
+  transition: transform 0.3s 0.1s ease-in-out;
 }
 
 .hamburger-box {
@@ -61,24 +59,25 @@ body {
   position: absolute;
   left: 0;
   top: 50%;
-  transition: transform .2s .2s ease-in-out;
+  transition: background-color 0.4s 0.1s ease-in-out;
 }
 
-.hamburger-inner::before, .hamburger-inner::after {
-  content: '';
+.hamburger-inner::before,
+.hamburger-inner::after {
+  content: "";
   width: 100%;
   height: 3px;
   background-color: #ffffff;
   position: absolute;
   left: 0;
-  transition: transform .2s .2s ease-in-out;
+  transition: transform 0.2s 0.2s ease-in-out;
 }
 
 .hamburger-inner::before {
   top: -8px;
 }
 
-.hamburger-inner::after{
+.hamburger-inner::after {
   top: 8px;
 }
 
@@ -90,17 +89,49 @@ body {
   transform: translateY(8px) rotate(45deg);
 }
 
-.hamburger-active .hamburger-inner::before {
+.hamburger-active .hamburger-inner::after {
   transform: translateY(-8px) rotate(-45deg);
 }
 
 .navigation {
-  display: none;
+  top: 42px; /*height menu 24px + 2x8px padding*/
+  height: calc(100vh - 42px);
+  width: 250px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  visibility: hidden;
+  transform: translateX(-250px);
 }
 
 .navigation-active {
   transform: translateX(0px);
   visibility: visible;
+}
+
+.navigation-list {
+  padding-left: 10px;
+  margin-top: 20px;
+  list-style: none;
+}
+
+.navigation-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.navigation-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: black;
+}
+
+.navigation-link span {
+  margin-left: 10px;
 }
 
 main {
