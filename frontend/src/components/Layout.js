@@ -7,9 +7,20 @@ import MenuBookIcon from "@material-ui/icons/MenuBook";
 import RestaurantIcon from "@material-ui/icons/Restaurant";
 import DirectionsRunIcon from "@material-ui/icons/DirectionsRun";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
+import { useDispatch, useSelector } from "react-redux";
+import { signout } from "../actions/userActions";
 
 export default function Layout() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const userSignin = useSelector((state) => state.userSignin);
+  const {userInfo} = userSignin;
+
+  const dispatch = useDispatch();
+  const signoutHandler = () => {
+    dispatch(signout());
+  }
+
   return (
     <nav>
       <div className="menu">
@@ -22,6 +33,22 @@ export default function Layout() {
           </span>
         </button>
         <div className="nav-title">FitApp</div>
+        {
+          userInfo ? (
+            <div className="dropdown">
+              <Link to="#"> {userInfo.name}</Link>             
+              <ul className="dropdown-content">
+                <li>
+                  <Link to="profil">Profil</Link>
+                </li>
+                <li>
+                  <Link to="/wyloguj" onClick={signoutHandler}>Wyloguj się</Link>
+                </li>
+              </ul>
+            </div>
+          ) : (""
+          )
+        }
         <div className="search">
           <SearchIcon fontSize="large"></SearchIcon>
         </div>
