@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRouter from "./routers/userRouter.js";
+import recipeRouter from "./routers/recipeRouter.js";
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ mongoose.connect("mongodb://localhost/fitapp", {
 });
 
 app.use("/api/users", userRouter);
+app.use("/api/recipes", recipeRouter)
 app.get("/", (req, res) => {
   res.send("Server is ready");
 });

@@ -83,7 +83,7 @@ export default function Layout() {
           <li className="navigation-item">
             <Link
               className="navigation-link"
-              to="/pzepisy"
+              to="/przepisy"
               onClick={() => {
                 setIsMenuOpen((isMenuOpen) => !isMenuOpen);
               }}
