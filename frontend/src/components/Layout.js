@@ -14,12 +14,12 @@ export default function Layout() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const userSignin = useSelector((state) => state.userSignin);
-  const {userInfo} = userSignin;
+  const { userInfo } = userSignin;
 
   const dispatch = useDispatch();
   const signoutHandler = () => {
     dispatch(signout());
-  }
+  };
 
   return (
     <nav>
@@ -33,22 +33,23 @@ export default function Layout() {
           </span>
         </button>
         <div className="nav-title">FitApp</div>
-        {
-          userInfo ? (
-            <div className="dropdown">
-              <Link to="#"> {userInfo.name}</Link>             
-              <ul className="dropdown-content">
-                <li>
-                  <Link to="profil">Profil</Link>
-                </li>
-                <li>
-                  <Link to="/wyloguj" onClick={signoutHandler}>Wyloguj się</Link>
-                </li>
-              </ul>
-            </div>
-          ) : (""
-          )
-        }
+        {userInfo ? (
+          <div className="dropdown">
+            <Link to="#"> {userInfo.name}</Link>
+            <ul className="dropdown-content">
+              <li>
+                <Link to="profil">Profil</Link>
+              </li>
+              <li>
+                <Link to="/wyloguj" onClick={signoutHandler}>
+                  Wyloguj się
+                </Link>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          ""
+        )}
         <div className="search">
           <SearchIcon fontSize="large"></SearchIcon>
         </div>
@@ -56,37 +57,73 @@ export default function Layout() {
       <div className={`navigation ${isMenuOpen ? "navigation-active" : ""}`}>
         <ul className="navigation-list">
           <li className="navigation-item">
-            <Link className="navigation-link" to="/logowanie">
+            <Link
+              className="navigation-link"
+              to="/logowanie"
+              onClick={() => {
+                setIsMenuOpen((isMenuOpen) => !isMenuOpen);
+              }}
+            >
               <PersonIcon fontSize="large"></PersonIcon>
               <span>Zaloguj</span>
             </Link>
           </li>
           <li className="navigation-item">
-            <Link className="navigation-link" to="/rejestracja">
+            <Link
+              className="navigation-link"
+              to="/rejestracja"
+              onClick={() => {
+                setIsMenuOpen((isMenuOpen) => !isMenuOpen);
+              }}
+            >
               <PersonAddIcon fontSize="large"></PersonAddIcon>
               <span>Zarejestruj</span>
             </Link>
           </li>
           <li className="navigation-item">
-            <Link className="navigation-link" to="/pzepisy">
+            <Link
+              className="navigation-link"
+              to="/pzepisy"
+              onClick={() => {
+                setIsMenuOpen((isMenuOpen) => !isMenuOpen);
+              }}
+            >
               <MenuBookIcon fontSize="large"></MenuBookIcon>
               <span>Przepisy</span>
             </Link>
           </li>
           <li className="navigation-item">
-            <Link className="navigation-link" to="/dieta">
+            <Link
+              className="navigation-link"
+              to="/dieta"
+              onClick={() => {
+                setIsMenuOpen((isMenuOpen) => !isMenuOpen);
+              }}
+            >
               <RestaurantIcon fontSize="large"></RestaurantIcon>
               <span>Dziennik dietetyczny</span>
             </Link>
           </li>
           <li className="navigation-item">
-            <Link className="navigation-link" to="/trening">
+            <Link
+              className="navigation-link"
+              to="/trening"
+              onClick={() => {
+                setIsMenuOpen((isMenuOpen) => !isMenuOpen);
+              }}
+            >
               <DirectionsRunIcon fontSize="large"></DirectionsRunIcon>
               <span>Dziennik treningowy </span>
             </Link>
           </li>
           <li className="navigation-item">
-            <Link className="navigation-link" to="/premium">
+            <Link
+              className="navigation-link"
+              to="/premium"
+              onClick={() => {
+                setIsMenuOpen((isMenuOpen) => !isMenuOpen);
+              }}
+            >
               <MonetizationOnIcon fontSize="large"></MonetizationOnIcon>
               <span>Premium </span>
             </Link>
