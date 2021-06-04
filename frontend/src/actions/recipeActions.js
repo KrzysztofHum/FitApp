@@ -10,7 +10,7 @@ export const listRecipes = () => async (dispatch) => {
     type: RECIPE_LIST_REQUEST,
   });
   try {
-    const { data } = await axios.get('/api/recipes');
+    const { data } = await axios.get('https://fit-appp.herokuapp.com/api/recipes');
     dispatch({ type: RECIPE_LIST_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: RECIPE_LIST_FAIL, payload: error.message });
