@@ -1,5 +1,5 @@
 {
-  "name": "gsm",
+  "name": "fitapp",
   "type": "module",
   "version": "1.0.0",
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
@@ -7,16 +7,8 @@
   "scripts": {
     "start": "node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/KrzysztofHum/GSM-Case.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/KrzysztofHum/GSM-Case/issues"
-  },
-  "homepage": "https://github.com/KrzysztofHum/GSM-Case#readme",
   "dependencies": {
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",

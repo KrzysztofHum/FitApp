@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { signin } from "../actions/userActions";
 import LoadingBox from "../components/LoadingBox";
@@ -29,13 +30,13 @@ export default function SigninScreen(props) {
 
   return (
     <div>
-      <form className="form" onSubmit={submitHandler}>
+      <Form onSubmit={submitHandler}>
         <div>
           <h1>LOGOWANIE</h1>
         </div>
         {loading && <LoadingBox></LoadingBox>}
         {error && <MessageBox>{error}</MessageBox>}
-        <div className="form">
+        <Wrapper>
           <label htmlFor="email">Podaj adres e-mail: </label>
           <input
             type="email"
@@ -44,8 +45,8 @@ export default function SigninScreen(props) {
             required
             onChange={(e) => setEmail(e.target.value)}
           ></input>
-        </div>
-        <div className="form">
+        </Wrapper>
+        <Wrapper>
           <label htmlFor="password">Podaj hasło: </label>
           <input
             type="password"
@@ -54,24 +55,60 @@ export default function SigninScreen(props) {
             required
             onChange={(e) => setPassword(e.target.value)}
           ></input>
-        </div>
-        <div className="form">
-          <button className="primary" type="submit">
-            ZALOGUJ
-          </button>
-        </div>
-        <div className="margin20">
-          <div>
-            Nowy Użytkownik ?{" "}
+        </Wrapper>
+        <Wrapper>
+          <button type="submit">ZALOGUJ</button>
+        </Wrapper>
+        <div>
+          <WrapperLink>
+            Nowy Użytkownik ?
             <Link to={`/rejestracja?redirect=${redirect}}`}>
               Stwórz swoje konto
             </Link>
-          </div>
-		  <div>
-			  <Link className="navigation-link margin20" to="przypomnieniehasla">ZAPOMNIAŁEM HASŁA</Link>
-		  </div>
+          </WrapperLink>
+          <WrapperLink>
+            <Link to="przypomnieniehasla">ZAPOMNIAŁEM HASŁA</Link>
+          </WrapperLink>
         </div>
-      </form>
+      </Form>
     </div>
   );
 }
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+
+  input {
+    padding: 4px;
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+    margin: 20px;
+    background-color: #52ba31;
+  }
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+`;
+
+const WrapperLink = styled.div`
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: black;
+`;

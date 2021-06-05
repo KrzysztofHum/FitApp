@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { register } from "../actions/userActions";
+import styled from "styled-components";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 
@@ -34,13 +35,13 @@ export default function RegisterScreen(props) {
   }, [props.history, redirect, userInfo]);
   return (
     <div>
-      <form className="form" onSubmit={submitHandler}>
+      <Form onSubmit={submitHandler}>
         <div>
           <h1>STWÓRZ KONTO</h1>
         </div>
         {loading && <LoadingBox></LoadingBox>}
         {error && <MessageBox>{error}</MessageBox>}
-        <div className="form">
+        <Wrapper>
           <label htmlFor="name">Nazwa</label>
           <input
             type="text"
@@ -49,8 +50,8 @@ export default function RegisterScreen(props) {
             required
             onChange={(e) => setName(e.target.value)}
           ></input>
-        </div>
-        <div className="form">
+        </Wrapper>
+        <Wrapper>
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -59,8 +60,8 @@ export default function RegisterScreen(props) {
             required
             onChange={(e) => setEmail(e.target.value)}
           ></input>
-        </div>
-        <div className="form">
+        </Wrapper>
+        <Wrapper>
           <label htmlFor="password">Hasło</label>
           <input
             type="password"
@@ -69,8 +70,8 @@ export default function RegisterScreen(props) {
             required
             onChange={(e) => setPassword(e.target.value)}
           ></input>
-        </div>
-        <div className="form">
+        </Wrapper>
+        <Wrapper>
           <label htmlFor="confirmPassword">Powtórz hasło</label>
           <input
             type="password"
@@ -79,17 +80,46 @@ export default function RegisterScreen(props) {
             required
             onChange={(e) => setConfirmPassword(e.target.value)}
           ></input>
-        </div>
-        <div className="form">
-          <button className="primary" type="submit">
-            Rejestracja
+        </Wrapper>
+        <Wrapper>
+          <button type="submit">
+            REJESTRACJA
           </button>
-        </div>
+        </Wrapper>
         <div>
           Posiadasz konto ?{" "}
           <Link to={`/signin?redirect=${redirect}`}>Zaloguj się</Link>
         </div>
-      </form>
+      </Form>
     </div>
   );
 }
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+
+  input {
+    padding: 4px;
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+    margin: 20px;
+    background-color: #52ba31;
+  }
+`;
+
+const Wrapper = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+width: 90%;
+margin: auto;
+`;

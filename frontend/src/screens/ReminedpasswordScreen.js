@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 
 export default function ReminedpasswordScreen() {
   const submitHandler = (e) => {
@@ -7,10 +8,10 @@ export default function ReminedpasswordScreen() {
   };
   return (
     <div>
-      <form className="form" onSubmit={submitHandler}>
-        <div className="form">
+      <Form onSubmit={submitHandler}>
+        <Wrapper>
           <label htmlFor="email">
-            Podasj adres e-mail użyty podczas rejestracji. Następnie zostanie do
+            Podaj adres e-mail użyty podczas rejestracji. Następnie zostanie do
             Ciebie wysłane nowe hasło.
           </label>
           <input
@@ -19,13 +20,44 @@ export default function ReminedpasswordScreen() {
             placeholder="Wpisz e-mail"
             required
           ></input>
-        </div>
-		<div className="form">
-          <button className="primary" type="submit">
-            WYŚLIJ
-          </button>
-        </div>
-      </form>
+        </Wrapper>
+        <Wrapper>
+          <button type="submit">WYŚLIJ</button>
+        </Wrapper>
+      </Form>
     </div>
   );
 }
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+
+  input {
+    padding: 4px;
+    width: 100%;
+  }
+
+  label {
+    padding: 6px;
+  }
+
+  button {
+    width: 100%;
+    margin: 20px;
+    background-color: #52ba31;
+  }
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+`;
